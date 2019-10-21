@@ -2,22 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerZone : MonoBehaviour {
+public class TriggerZone : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start()
+    {
 
-    void OnTriggerEnter(Collider col) {
-        if (col.gameObject.tag == "Player")
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (Inventory.charge == 4)
         {
-            transform.Find("door").SendMessage("DoorCheck");
+            transform.FindChild("door").SendMessage("DoorCheck");
+        }
+        else
+        {
+
         }
     }
 }
