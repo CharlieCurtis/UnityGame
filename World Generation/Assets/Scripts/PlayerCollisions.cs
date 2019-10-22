@@ -18,7 +18,7 @@ public class PlayerCollisions : MonoBehaviour {
         {
             if (hit.collider.gameObject.tag == "playerDoor")
             {
-                Debug.Log("We are facing the door.");
+             //   Debug.Log("We are facing the door.");
             }
         }
 	}
@@ -27,7 +27,7 @@ public class PlayerCollisions : MonoBehaviour {
     {
         if (hit.gameObject.tag == "playerDoor")
         {
-            Debug.Log("Walked into door.");
+        //    Debug.Log("Walked into door.");
         }
     }
 }

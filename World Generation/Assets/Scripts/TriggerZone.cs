@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TriggerZone : MonoBehaviour
 {
+    public AudioClip lockedSound;
 
     // Use this for initialization
     void Start()
@@ -17,15 +18,20 @@ public class TriggerZone : MonoBehaviour
 
     }
 
+
     void OnTriggerEnter(Collider col)
     {
-        if (Inventory.charge == 4)
+        if (col.gameObject.tag == "Player")
         {
-            transform.FindChild("door").SendMessage("DoorCheck");
-        }
-        else
-        {
-
+            if (Inventory.charge == 4)
+            {
+                transform.Find("door").SendMessage("DoorCheck");
+            }
+            else
+            {
+                transform.Find("door").GetComponent<AudioSource>().PlayOneShot(lockedSound);
+                col.gameObject.SendMessage("HUDon");
+            }
         }
     }
 }
