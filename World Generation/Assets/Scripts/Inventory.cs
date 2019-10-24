@@ -14,13 +14,14 @@ public class Inventory : MonoBehaviour
     public RawImage chargeHudGUI;
 
     // Generator
-    //public Texture2D[] meterCharge;
-    //public Renderer meter;
+    public Texture2D[] meterCharge;
+    public Renderer meter;
 
     // Use this for initialization
     void Start()
     {
         charge = 0;
+        meter.material.mainTexture = meterCharge[charge];
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class Inventory : MonoBehaviour
         AudioSource.PlayClipAtPoint(collectSound, transform.position);
         charge++;
         chargeHudGUI.texture = hudCharge[charge];
-        // meter.material.mainTexture = meterCharge[charge];
+        meter.material.mainTexture = meterCharge[charge];
     }
 
     void HUDon()
