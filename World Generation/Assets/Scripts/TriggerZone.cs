@@ -29,11 +29,16 @@ public class TriggerZone : MonoBehaviour
             if (Inventory.charge == 4)
             {
                 transform.Find("door").SendMessage("DoorCheck");
-                if(GameObject.Find("chargeUI"))
+                if (GameObject.Find("chargeUI"))
                 {
                     Destroy(GameObject.Find("chargeUI"));
                     doorLight.color = Color.green;
                 }
+            }
+            else if (Inventory.charge > 0 && Inventory.charge < 4)
+            {
+                textHints.SendMessage("ShowHint", "This door still won't budge. Looks like it needs fully charging. There must be more power cells near here that will help!");
+                transform.Find("door").GetComponent<AudioSource>().PlayOneShot(lockedSound);
             }
             else
             {
